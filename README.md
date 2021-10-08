@@ -1,6 +1,8 @@
 # barber_booking
 
-https://im2.ezgif.com/tmp/ezgif-2-aeda1951e344.gif
+![](https://im2.ezgif.com/tmp/ezgif-2-aeda1951e344.gif)
+
+![](https://im2.ezgif.com/tmp/ezgif-2-1ea29d22a35b.gif)
 
 ## Getting Started
 
