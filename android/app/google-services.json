@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "493965455824",
+    "project_id": "booking-3f5c8",
+    "storage_bucket": "booking-3f5c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493965455824:android:69a006dab303a5c10ac9d5",
+        "android_client_info": {
+          "package_name": "com.example.barber_booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493965455824-3ai447c1r3snefv9lopkk1cf6cm4v8tq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.barber_booking",
+            "certificate_hash": "bb454657f64b1ad3a32a5f17fe1cc89f819380e4"
+          }
+        },
+        {
+          "client_id": "493965455824-7o8nbvsv4lc377fcq1mjhfm7v39p7vcq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD6d-PyfWVrKVdl2asi6xd8GyAu9OvA2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493965455824-7o8nbvsv4lc377fcq1mjhfm7v39p7vcq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
