@@ -1,6 +1,6 @@
 # barber_booking
 
-A new Flutter project.
+https://im2.ezgif.com/tmp/ezgif-2-aeda1951e344.gif
 
 ## Getting Started
 
