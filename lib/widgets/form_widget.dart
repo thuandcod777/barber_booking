@@ -60,8 +60,9 @@ class _FormWidgetState extends State<FormWidget> {
               builder: (context, state) {
                 return TextFormField(
                   onChanged: (val) {
-                    context.read<FormBloc>().add(ListDynamicEvent(
-                        index: widget.index, nameProduct: val));
+                    context
+                        .read<FormBloc>()
+                        .add(ListDynamicEvent(index: widget.index, value: val));
                   },
                   onSaved: (value) {
                     dynamicMass!.numberProduct = value;
@@ -87,8 +88,8 @@ class _FormWidgetState extends State<FormWidget> {
                       /*  context
                           .read<FormBloc>()
                           .add(ChangeNumberProductEvent(numberProduct: val)); */
-                      context.read<FormBloc>().add(ListDynamicEvent(
-                          index: widget.index, numberProduct: val));
+                      context.read<FormBloc>().add(
+                          ListDynamicEvent(index: widget.index, value: val));
                     },
                     onSaved: (value) {
                       dynamicMass!.numberProduct = value;

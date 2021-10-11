@@ -75,13 +75,12 @@ class ChangeDropDownEvent extends FormEvent {
 
 class ListDynamicEvent extends FormEvent {
   final int index;
-  final String? nameProduct;
-  final String? numberProduct;
+  final String value;
 
-  ListDynamicEvent({required this.index, this.nameProduct, this.numberProduct});
+  ListDynamicEvent({required this.index, required this.value});
 
   @override
-  List<Object?> get props => [index, nameProduct, numberProduct];
+  List<Object?> get props => [index, value];
 
   String toString() => 'Data: {data:$index}';
 }

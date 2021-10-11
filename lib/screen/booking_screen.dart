@@ -4,8 +4,8 @@ import 'package:barber_booking/model/booking.dart';
 import 'package:barber_booking/model/truck.dart';
 import 'package:barber_booking/widgets/date_picker_widget.dart';
 import 'package:barber_booking/widgets/dynamic_form_widget.dart';
-import 'package:barber_booking/widgets/dynamic_widget.dart';
 import 'package:barber_booking/widgets/form_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +23,6 @@ class _BookingScreenState extends State<BookingScreen> {
   BookingModel? bookingModel = BookingModel();
 
   TruckModel? truck;
-
-  FormBloc? formbloc;
 
   int _currentStep = 0;
 
@@ -166,70 +164,16 @@ class _BookingScreenState extends State<BookingScreen> {
                 nameTruck(),
                 licensePlate(),
                 dates(),
-                /*  name(),
-                nameProduct(),
-                numberProduct(), */
-                /* BlocBuilder<FormBloc, FormOrderState>(
-                  builder: (context, state) {
-                    return Container(
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Builder(
-                                  builder: (context) {
-                                    String? textNameProduct = context
-                                        .select<FormBloc, String?>((bloc) =>
-                                            (bloc.state is ListDynamic)
-                                                ? (bloc.state as ListDynamic)
-                                                    .nameProduct
-                                                : null);
-
-                                    return Text('$textNameProduct');
-                                  },
-                                ),
-                                Builder(
-                                  builder: (context) {
-                                    String? textNumberProduct = context
-                                        .select<TruckBloc, String?>((bloc) =>
-                                            (bloc.state is ListDynamic)
-                                                ? (bloc.state as ListDynamic)
-                                                    .numberProduct
-                                                : null);
-
-                                    return Text('$textNumberProduct');
-                                  },
-                                ),
-                              ],
-                            );
-                          }),
-                    );
-                  },
-                ) */
-
+                name(),
                 BlocBuilder<FormBloc, FormOrderState>(
                   builder: (context, state) {
                     if (state is ListDynamic) {
                       return ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
                           itemCount: state.dynamicList.length,
                           itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Builder(
-                                  builder: (context) {
-                                    String? textNameProduct = context
-                                        .select<FormBloc, String?>((bloc) =>
-                                            (bloc.state is ListDynamic)
-                                                ? (bloc.state as ListDynamic)
-                                                    .nameProduct
-                                                : null);
-
-                                    return Text('$textNameProduct');
-                                  },
-                                ),
-                              ],
-                            );
+                            return listDynamic(index);
                           });
                     } else {
                       return Text('Error');
@@ -241,6 +185,43 @@ class _BookingScreenState extends State<BookingScreen> {
           )
         ],
       ));
+
+  Widget listDynamic(int index) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text('textNameProduct'),
+            Builder(
+              builder: (context) {
+                String? textNameProduct = context.select<FormBloc, String?>(
+                    (bloc) => (bloc.state is ListDynamic)
+                        ? (bloc.state as ListDynamic).nameProduct
+                        : null);
+
+                return Text('$textNameProduct');
+              },
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Text('textNumberProduct'),
+            Builder(
+              builder: (context) {
+                String? textNumberProduct = context.select<FormBloc, String?>(
+                    (bloc) => (bloc.state is ListDynamic)
+                        ? (bloc.state as ListDynamic).numberProduct
+                        : null);
+
+                return Text('$textNumberProduct');
+              },
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 
   /* Widget numberProduct() {
     return BlocBuilder<FormBloc, FormOrderState>(
@@ -308,7 +289,7 @@ class _BookingScreenState extends State<BookingScreen> {
     );
   }
 
-  /*  Widget name() {
+  Widget name() {
     return BlocBuilder<FormBloc, FormOrderState>(
       builder: (context, state) {
         return Row(
@@ -329,7 +310,7 @@ class _BookingScreenState extends State<BookingScreen> {
         );
       },
     );
-  } */
+  }
 
   Widget licensePlate() {
     return BlocBuilder<TruckBloc, TruckBlocState>(

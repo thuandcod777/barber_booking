@@ -1,7 +1,6 @@
 import 'package:barber_booking/model/booking.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:form_bloc/form_bloc.dart';
 
 part 'form_event.dart';
 part 'form_state.dart';
@@ -33,7 +32,7 @@ class FormBloc extends Bloc<FormEvent, FormOrderState> {
     }
 
     if (event is ListDynamicEvent) {
-      yield* _mapListDynamic(event);
+      yield* _mapListDynamic(event.index, event.value);
     }
   }
 
@@ -59,13 +58,13 @@ class FormBloc extends Bloc<FormEvent, FormOrderState> {
     print(data);
   }
 
-  Stream<FormOrderState> _mapListDynamic(ListDynamicEvent event) async* {
+  Stream<FormOrderState> _mapListDynamic(int index, String value) async* {
     int foundKey = -1;
     List<Map<String, dynamic>> _values = [];
     for (var map in _values) {
       if (map.containsKey("id")) {
-        if (map["id"] == event.index) {
-          foundKey = event.index;
+        if (map["id"] == index) {
+          foundKey = index;
           break;
         }
       }
@@ -76,15 +75,17 @@ class FormBloc extends Bloc<FormEvent, FormOrderState> {
       });
     }
 
-    Map<String, dynamic> json = {
+    /*   Map<String, dynamic> json = {
       "id": event.index,
       "value": {
-        "textNamePr": event.nameProduct,
-        "textNumberPr": event.numberProduct,
+        "textNamePr": event.value!.nameProduct,
+        "textNumberPr": event.value!.numberProduct,
       },
-    };
+    }; */
 
-    _values.add(json);
+    /*  Map<String, dynamic> json = {"id": index, "value": value};
+
+    _values.add(json); */
 
     yield ListDynamic(dynamicList: _values);
   }
