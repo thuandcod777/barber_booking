@@ -1,20 +1,15 @@
-import 'package:barber_booking/bloc/bloc/form_bloc.dart';
+import 'package:barber_booking/bloc/form_bloc/form_bloc.dart';
 import 'package:barber_booking/model/booking.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FormWidget extends StatefulWidget {
   final int index;
-  // final bool add;
 
-  //final state = _FormWidgetState();
   FormWidget({
     required this.index,
-    /* required this.add */
   });
 
-  /*  @override
-  _FormWidgetState createState() => state; */
   @override
   _FormWidgetState createState() => _FormWidgetState();
 }
@@ -34,8 +29,6 @@ class _FormWidgetState extends State<FormWidget> {
       element?.getItemMass();
     });
 
-    //BlocProvider.of<FormBloc>(context).add(ChangeDropDownEvent(model: data));
-
     super.initState();
   }
 
@@ -52,10 +45,6 @@ class _FormWidgetState extends State<FormWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            /*   Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: _addFormDynamic(widget.index, widget.add),
-          ), */
             BlocBuilder<FormBloc, FormOrderState>(
               builder: (context, state) {
                 return TextFormField(
@@ -85,9 +74,6 @@ class _FormWidgetState extends State<FormWidget> {
                   child: TextFormField(
                     keyboardType: TextInputType.number,
                     onChanged: (val) {
-                      /*  context
-                          .read<FormBloc>()
-                          .add(ChangeNumberProductEvent(numberProduct: val)); */
                       context.read<FormBloc>().add(
                           ListDynamicEvent(index: widget.index, value: val));
                     },
@@ -144,31 +130,4 @@ class _FormWidgetState extends State<FormWidget> {
           ],
         ));
   }
-
-  /* Widget _addFormDynamic(
-    int index,
-    bool add,
-  ) {
-    return GestureDetector(
-      onTap: () {
-        if (add) {
-          dynamicModel.insert(0, null);
-        } else {
-          dynamicModel.removeAt(index);
-        }
-
-        setState(() {});
-      },
-      child: Container(
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle, color: (add) ? Colors.green : Colors.red),
-        child: Icon(
-          (add) ? Icons.add : Icons.remove,
-          color: Colors.white,
-        ),
-      ),
-    );
-  } */
 }

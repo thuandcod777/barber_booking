@@ -1,9 +1,8 @@
 import 'package:barber_booking/bloc/authentication/authentication_bloc.dart';
-import 'package:barber_booking/bloc/bloc/form_bloc.dart';
+import 'package:barber_booking/bloc/form_bloc/form_bloc.dart';
 import 'package:barber_booking/bloc/phone/phoneauth_bloc.dart';
 import 'package:barber_booking/bloc/signin/signin_bloc.dart';
 import 'package:barber_booking/bloc/signup/signup_cubit.dart';
-import 'package:barber_booking/bloc/truck/cubit/truck_cubit.dart';
 import 'package:barber_booking/bloc/truck_bloc/truck_bloc_bloc.dart';
 import 'package:barber_booking/provider/phone_auth_provider.dart';
 import 'package:barber_booking/repositories/authentication_repository.dart';
@@ -62,12 +61,6 @@ void main() async {
             userDataRepository: _userDataRepository)
           ..add(AppStarted()),
       ),
-      /*BlocProvider(
-        lazy: false,
-        create: (context) => TruckCubit(
-          truckDataRepository: _truckDataRepository,
-        ),
-      ),*/
       BlocProvider(
         lazy: false,
         create: (context) => TruckBloc(
@@ -75,8 +68,6 @@ void main() async {
         )..add(LoadTruckEvent()),
       ),
       BlocProvider(create: (context) => FormBloc())
-      /* BlocProvider<LocationBloc>(
-          create: (context) => LocationBloc(geolocator: UserDataRepository())),*/
     ],
     child: MyApp(),
   ));

@@ -8,10 +8,6 @@ class DynamicFormWidget extends StatelessWidget {
 
   List<DynamicModel?> dynamics = [null];
 
-  static DynamicModel? nameProducts;
-  static DynamicModel? numberProdcts;
-  static DynamicModel? dropdownMass;
-
   @override
   Widget build(BuildContext context) {
     return Column(

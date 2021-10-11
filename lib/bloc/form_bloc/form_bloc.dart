@@ -1,6 +1,7 @@
 import 'package:barber_booking/model/booking.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:form_bloc/form_bloc.dart';
 
 part 'form_event.dart';
 part 'form_state.dart';
@@ -59,8 +60,8 @@ class FormBloc extends Bloc<FormEvent, FormOrderState> {
   }
 
   Stream<FormOrderState> _mapListDynamic(int index, String value) async* {
-    int foundKey = -1;
     List<Map<String, dynamic>> _values = [];
+    int foundKey = -1;
     for (var map in _values) {
       if (map.containsKey("id")) {
         if (map["id"] == index) {
@@ -87,6 +88,6 @@ class FormBloc extends Bloc<FormEvent, FormOrderState> {
 
     _values.add(json); */
 
-    yield ListDynamic(dynamicList: _values);
+    yield ListDynamicState(dynamicList: _values);
   }
 }

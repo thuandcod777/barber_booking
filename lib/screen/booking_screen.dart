@@ -167,7 +167,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 name(),
                 BlocBuilder<FormBloc, FormOrderState>(
                   builder: (context, state) {
-                    if (state is ListDynamic) {
+                    if (state is ListDynamicState) {
                       return ListView.builder(
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
@@ -195,8 +195,8 @@ class _BookingScreenState extends State<BookingScreen> {
             Builder(
               builder: (context) {
                 String? textNameProduct = context.select<FormBloc, String?>(
-                    (bloc) => (bloc.state is ListDynamic)
-                        ? (bloc.state as ListDynamic).nameProduct
+                    (bloc) => (bloc.state is ListDynamicState)
+                        ? (bloc.state as ListDynamicState).nameProduct
                         : null);
 
                 return Text('$textNameProduct');
@@ -210,8 +210,8 @@ class _BookingScreenState extends State<BookingScreen> {
             Builder(
               builder: (context) {
                 String? textNumberProduct = context.select<FormBloc, String?>(
-                    (bloc) => (bloc.state is ListDynamic)
-                        ? (bloc.state as ListDynamic).numberProduct
+                    (bloc) => (bloc.state is ListDynamicState)
+                        ? (bloc.state as ListDynamicState).numberProduct
                         : null);
 
                 return Text('$textNumberProduct');
